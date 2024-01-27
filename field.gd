@@ -25,10 +25,12 @@ func _process(delta):
 		newBall.dir = newBall.random_direction()
 		add_child(newBall)
 		ballCounter += 1
-	if Input.is_action_just_pressed("rave"):
+	elif Input.is_action_just_pressed("rave"):
 		$Background.set_color(Color(randf_range(0, 1), randf_range(0, 1), randf_range(0, 1), randf_range(0, 1)))
-
-	print(ballCounter)
+	elif Input.is_action_just_pressed("smaller"):
+		scale = scale / 2
+	elif Input.is_action_just_pressed("bigger"):
+		scale = scale * 2
 
 func _on_ball_timer_timeout():
 	$Ball.new_ball()
