@@ -79,6 +79,7 @@ position = Vector2(576, 658)
 shape = SubResource("RectangleShape2D_hiv8r")
 
 [node name="Ball" parent="." instance=ExtResource("4_vvp0e")]
+position = Vector2(576, 324)
 
 [node name="ScoreLeft" type="Area2D" parent="."]
 

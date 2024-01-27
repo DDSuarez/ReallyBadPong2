@@ -4,13 +4,15 @@ extends Node2D
 
 const PADDLE_SPEED: int = 500
 
-var score := [0, 0] # 0:Player, 1: CPU
+#var score := [0, 0] # 0:Player, 1: CPU
+
+var ballCounter
 
 var ballScene = preload("res://ball.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	ballCounter = 0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,20 +24,27 @@ func _process(delta):
 		newBall.speed = newBall.START_SPEED
 		newBall.dir = newBall.random_direction()
 		add_child(newBall)
+		ballCounter += 1
 	if Input.is_action_just_pressed("rave"):
 		$Background.set_color(Color(randf_range(0, 1), randf_range(0, 1), randf_range(0, 1), randf_range(0, 1)))
 
+	print(ballCounter)
 
 func _on_ball_timer_timeout():
 	$Ball.new_ball()
+	ballCounter += 1
 
 
 func _on_score_left_body_entered(body):
-	score[1] += 1
-	$HUD/CPUScore.text = str(score[1])
-	$BallTimer.start()
+	$CPU.score += 1
+	$HUD/CPUScore.text = str($CPU.score)
+	ballCounter -= 1
+	if ballCounter == 0:
+		$BallTimer.start()
 
 func _on_score_right_body_entered(body):
-	score[0] += 1
-	$HUD/PlayerScore.text = str(score[0])
-	$BallTimer.start()
+	$Player.score += 1
+	$HUD/PlayerScore.text = str($Player.score)
+	ballCounter -= 1
+	if ballCounter == 0:
+		$BallTimer.start()
