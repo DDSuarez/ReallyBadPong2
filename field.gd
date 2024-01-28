@@ -9,6 +9,8 @@ const WIN_SCORE : int = 5
 
 var ballCounter : int
 var charScale : Vector2
+var p1Jammed : bool
+var p2Jammed : bool
 
 #var ballScene = preload("res://ball.tscn")
 
@@ -16,11 +18,19 @@ var charScale : Vector2
 func _ready():
 	ballCounter = 0
 	charScale = Vector2(1,1)
+	p1Jammed = false
+	p2Jammed = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("jam"):
+	if Input.is_action_just_pressed("p1_jam"):
+		p1Jammed = true
+		p2Jammed = false
+		jamOut()
+	elif Input.is_action_just_pressed("p2_jam"):
+		p1Jammed = false
+		p2Jammed = true
 		jamOut()
 		
 	if Globals.playerScore >= WIN_SCORE or Globals.cpuScore >= WIN_SCORE:
@@ -28,7 +38,7 @@ func _process(delta):
 		
 func jamOut():
 	#var jam = randi_range(1,7)
-	var jam = 5
+	var jam = 8
 	
 	match jam:
 		1:
@@ -68,8 +78,31 @@ func jamOut():
 		7:
 			# decrease ball speed
 			$Ball.speed -= $Ball.ACCEL
+		8:
+			var ballScene = load("res://ball.tscn")
+			var newBall = ballScene.instantiate()
+			newBall.speed = 1000
+			
+			var new_dir := Vector2()
+			new_dir.y = randf_range(-1, 1)
+			
+			if p1Jammed:
+				newBall.position.x = $Player.position.x + 60
+				newBall.position.y = $Player.position.y
+				new_dir.x = 1
+			elif p2Jammed:
+				newBall.position.x = $CPU.position.x - 60
+				newBall.position.y = $CPU.position.y
+				new_dir.y = -1
+			
+			newBall.dir = new_dir
+			add_child(newBall)
+			ballCounter += 1
 		_:
 			pass
+			
+	p1Jammed = false
+	p2Jammed = false
 			
 
 func _on_ball_timer_timeout():
