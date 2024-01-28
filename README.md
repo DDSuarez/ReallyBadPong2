@@ -25,6 +25,9 @@ Credits
 -
 jingles-steel_00.ogg graciously in use from Kenney's royalty free assets: https://kenney.nl/
 
+Basis for Pong code was from this tutorial I followed that helped me understand what nodes to use for each part. Using CharacterBody2D for the ball and not the player was the trick:
+https://youtu.be/Xq9AyhX8HUc
+
 
 
 Learnings
