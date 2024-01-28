@@ -33,6 +33,8 @@ func _process(delta):
 		p2Jammed = true
 		jamOut()
 		
+	$WrappedIndicator.visible = Globals.wrap
+	
 	if Globals.playerScore >= WIN_SCORE or Globals.cpuScore >= WIN_SCORE:
 		get_tree().change_scene_to_packed(end_screen)
 		
@@ -69,7 +71,6 @@ func jamOut():
 		5:
 			# turn screen wrap on/off
 			Globals.wrap = !Globals.wrap
-			$WrappedIndicator.visible = Globals.wrap
 		6:
 			# increase ball speed
 			$Ball.speed += $Ball.ACCEL
