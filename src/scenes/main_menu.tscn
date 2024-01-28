@@ -1,9 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dp0mcgh1qtnjs"]
+[gd_scene load_steps=3 format=3 uid="uid://dp0mcgh1qtnjs"]
 
-[ext_resource type="Script" path="res://main_menu.gd" id="1_vaaye"]
+[ext_resource type="Script" path="res://src/scripts/main_menu.gd" id="1_184iu"]
+[ext_resource type="Texture2D" uid="uid://cnnsungi0ji64" path="res://assets/images/icon.png" id="2_ge1ns"]
 
 [node name="MainMenu" type="CanvasLayer"]
-script = ExtResource("1_vaaye")
+script = ExtResource("1_184iu")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 1152.0
@@ -75,6 +76,10 @@ S/Down: moves your paddle down
 A/D/Left/Right: jam
 
 First to 10 wins"
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(1080, 72)
+texture = ExtResource("2_ge1ns")
 
 [connection signal="pressed" from="OnePlayer/OnePlayerMode" to="." method="_on_one_player_mode_pressed"]
 [connection signal="pressed" from="TwoPlayer/TwoPlayerMode" to="." method="_on_two_player_mode_pressed"]

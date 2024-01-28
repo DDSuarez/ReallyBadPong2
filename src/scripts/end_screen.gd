@@ -23,5 +23,5 @@ func _process(delta):
 func _on_restart_button_pressed():
 	Globals.playerScore = 0
 	Globals.cpuScore = 0
-	var main_menu = load("res://main_menu.tscn")
+	var main_menu = load("res://src/scenes/main_menu.tscn")
 	get_tree().change_scene_to_packed(main_menu)

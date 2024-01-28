@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var end_screen = preload("res://end_screen.tscn")
+@onready var end_screen = preload("res://src/scenes/end_screen.tscn")
 
 @onready var screen_size = get_viewport_rect().size
 
@@ -43,7 +43,7 @@ func jamOut():
 	match jam:
 		1:
 			# spawn a new ball
-			var ballScene = load("res://ball.tscn")
+			var ballScene = load("res://src/scenes/ball.tscn")
 			var newBall = ballScene.instantiate()
 			newBall.position.x = screen_size.x / 2
 			newBall.position.y = randi_range(200, screen_size.y - 200)
@@ -80,7 +80,7 @@ func jamOut():
 			$Ball.speed -= $Ball.ACCEL
 		8:
 			# launches a fast ball from the paddle across the screen
-			var ballScene = load("res://ball.tscn")
+			var ballScene = load("res://src/scenes/ball.tscn")
 			var newBall = ballScene.instantiate()
 			newBall.speed = 1000
 			
