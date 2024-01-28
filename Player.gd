@@ -3,11 +3,12 @@ extends StaticBody2D
 @onready var screen_size = get_viewport_rect().size
 @onready var paddle_size = $ColorRect.get_size()
 
-var score : int
+#var score : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	score = 0
+	#score = 0
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
