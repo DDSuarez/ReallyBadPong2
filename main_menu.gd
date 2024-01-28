@@ -18,11 +18,11 @@ func load_game():
 
 
 func _on_one_player_mode_pressed():
-	Score.player2Mode = false
+	Globals.player2Mode = false
 	load_game()
 
 
 func _on_two_player_mode_pressed():
-	Score.player2Mode = true
+	Globals.player2Mode = true
 	load_game()
 	

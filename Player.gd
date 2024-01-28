@@ -14,5 +14,9 @@ func _process(delta):
 	elif Input.is_action_pressed("p1_down"):
 		position.y += get_parent().PADDLE_SPEED * delta
 		
-	#limit paddle movement to window
-	position.y = clamp(position.y, paddle_size.y / 2, screen_size.y - paddle_size.y / 2)
+	if Globals.wrap:
+		# wrap the paddle vertically
+		position.y = wrapf(position.y, 0, screen_size.y)
+	else:
+		# limit paddle movement to window. the default behavior.
+		position.y = clamp(position.y, paddle_size.y / 2, screen_size.y - paddle_size.y / 2)

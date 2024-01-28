@@ -10,7 +10,7 @@ const WIN_SCORE : int = 5
 var ballCounter : int
 var charScale : Vector2
 
-var ballScene = preload("res://ball.tscn")
+#var ballScene = preload("res://ball.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,16 +23,17 @@ func _process(delta):
 	if Input.is_action_just_pressed("jam"):
 		jamOut()
 		
-	if Score.player >= WIN_SCORE or Score.cpu >= WIN_SCORE:
+	if Globals.playerScore >= WIN_SCORE or Globals.cpuScore >= WIN_SCORE:
 		get_tree().change_scene_to_packed(end_screen)
 		
 func jamOut():
-	var jam = randi_range(1,4)
-	#var jam = 4
+	#var jam = randi_range(1,7)
+	var jam = 5
 	
 	match jam:
 		1:
 			# spawn a new ball
+			var ballScene = load("res://ball.tscn")
 			var newBall = ballScene.instantiate()
 			newBall.position.x = screen_size.x / 2
 			newBall.position.y = randi_range(200, screen_size.y - 200)
@@ -57,6 +58,16 @@ func jamOut():
 				$Player.scale = charScale
 				$CPU.scale = charScale
 				$Ball.scale = charScale
+		5:
+			# turn screen wrap on/off
+			Globals.wrap = !Globals.wrap
+			$WrappedIndicator.visible = Globals.wrap
+		6:
+			# increase ball speed
+			$Ball.speed += $Ball.ACCEL
+		7:
+			# decrease ball speed
+			$Ball.speed -= $Ball.ACCEL
 		_:
 			pass
 			
@@ -67,15 +78,15 @@ func _on_ball_timer_timeout():
 
 
 func _on_score_left_body_entered(body):
-	Score.cpu += 1
-	$HUD/CPUScore.text = str(Score.cpu)
+	Globals.cpuScore += 1
+	$HUD/CPUScore.text = str(Globals.cpuScore)
 	ballCounter -= 1
 	if ballCounter == 0:
 		$BallTimer.start()
 
 func _on_score_right_body_entered(body):
-	Score.player += 1
-	$HUD/PlayerScore.text = str(Score.player)
+	Globals.playerScore += 1
+	$HUD/PlayerScore.text = str(Globals.playerScore)
 	ballCounter -= 1
 	if ballCounter == 0:
 		$BallTimer.start()

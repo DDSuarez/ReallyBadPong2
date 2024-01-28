@@ -4,13 +4,13 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if Score.player >= 3:
-		if !Score.player2Mode:
+	if Globals.playerScore >= 3:
+		if !Globals.player2Mode:
 			$Winner.set_text("Player won")
 		else:
 			$Winner.set_text("Player 1 won")
 	else:
-		if !Score.player2Mode:
+		if !Globals.player2Mode:
 			$Winner.set_text("CPU won")
 		else:
 			$Winner.set_text("Player 2 won")
@@ -21,7 +21,7 @@ func _process(delta):
 	
 
 func _on_restart_button_pressed():
-	Score.player = 0
-	Score.cpu = 0
+	Globals.playerScore = 0
+	Globals.cpuScore = 0
 	var main_menu = load("res://main_menu.tscn")
 	get_tree().change_scene_to_packed(main_menu)
