@@ -1,5 +1,7 @@
-Really Bad Pong 2.
+Really Bad Pong 2
 -
+Eventually playable in browser at https://metasaval.itch.io/really-bad-pong-2
+
 Made for Global Game Jam 2024. Also game one of my 20 game challenge. Also also my first complete game!
 https://20_games_challenge.gitlab.io/
 
