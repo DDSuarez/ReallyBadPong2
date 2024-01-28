@@ -16,6 +16,7 @@ config/version="1"
 run/main_scene="res://src/scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://assets/images/icon.png"
+config/windows_native_icon="res://assets/images/icon.ico"
 
 [autoload]
 
