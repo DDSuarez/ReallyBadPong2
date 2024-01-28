@@ -15,3 +15,6 @@ data_*/
 
 # VSCode-specific ignores
 .vscode/
+
+# Binaries
+bin/
