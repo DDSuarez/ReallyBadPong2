@@ -23,6 +23,8 @@ First to 10 wins
 
 Credits
 -
+Made in the Godot Engine v4.2: https://godotengine.org/
+
 jingles-steel_00.ogg graciously in use from Kenney's royalty free assets: https://kenney.nl/
 
 Basis for Pong code was from this tutorial I followed from Coding With Russ on YouTube: https://youtu.be/Xq9AyhX8HUc
