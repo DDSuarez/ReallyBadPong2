@@ -73,5 +73,4 @@ S/Down: moves your paddle down
 A/D/Left/Right/basically every remaining key: jam"
 
 [connection signal="pressed" from="OnePlayer/OnePlayerMode" to="." method="_on_one_player_mode_pressed"]
-[connection signal="pressed" from="TwoPlayer/TwoPlayerMode" to="." method="_on_one_player_mode_pressed"]
 [connection signal="pressed" from="TwoPlayer/TwoPlayerMode" to="." method="_on_two_player_mode_pressed"]
