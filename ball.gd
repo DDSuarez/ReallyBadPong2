@@ -23,6 +23,7 @@ func _physics_process(delta):
 	var collision = move_and_collide(dir * speed * delta)
 	var collider
 	if collision:
+		$AudioStreamPlayer2D.play()
 		collider = collision.get_collider()
 		#if ball hits paddle
 		if collider == $"../Player" or collider == $"../CPU":

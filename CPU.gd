@@ -16,7 +16,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Score.player2Mode:
+	if Globals.player2Mode:
 		if Input.is_action_pressed("p2_up"):
 			position.y -= get_parent().PADDLE_SPEED * delta
 		elif Input.is_action_pressed("p2_down"):
@@ -33,8 +33,11 @@ func _process(delta):
 			move_by = dist
 		
 		position.y -= move_by
-		
-	#limit paddle movement to window
-	#position.y = clamp(position.y, paddle_size.y / 2, screen_size.y - paddle_size.y / 2)
-	position.y = wrapf(position.y, 0, screen_size.y)
+	
+	if Globals.wrap:
+		# wrap the paddle vertically
+		position.y = wrapf(position.y, 0, screen_size.y)
+	else:
+		# limit paddle movement to window. the default behavior.
+		position.y = clamp(position.y, paddle_size.y / 2, screen_size.y - paddle_size.y / 2)
 	
