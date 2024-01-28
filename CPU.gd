@@ -16,17 +16,25 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#move paddle towards ball
-	ball_pos = $"../Ball".position
-	dist = position.y - ball_pos.y
-	newSpeed = randi_range(100, CPU_SPEED)
-	
-	if abs(dist) > newSpeed * delta:
-		move_by = newSpeed * delta * (dist / abs(dist)) # gives a sign to the move_by variable to see if the ball is above or below
-	else:
-		move_by = dist
-	
-	position.y -= move_by
-	
+	if Score.player2Mode:
+		if Input.is_action_pressed("p2_up"):
+			position.y -= get_parent().PADDLE_SPEED * delta
+		elif Input.is_action_pressed("p2_down"):
+			position.y += get_parent().PADDLE_SPEED * delta
+	else:		
+		#move paddle towards ball
+		ball_pos = $"../Ball".position
+		dist = position.y - ball_pos.y
+		newSpeed = randi_range(100, CPU_SPEED)
+		
+		if abs(dist) > newSpeed * delta:
+			move_by = newSpeed * delta * (dist / abs(dist)) # gives a sign to the move_by variable to see if the ball is above or below
+		else:
+			move_by = dist
+		
+		position.y -= move_by
+		
 	#limit paddle movement to window
-	position.y = clamp(position.y, paddle_size.y / 2, screen_size.y - paddle_size.y / 2)
+	#position.y = clamp(position.y, paddle_size.y / 2, screen_size.y - paddle_size.y / 2)
+	position.y = wrapf(position.y, 0, screen_size.y)
+	

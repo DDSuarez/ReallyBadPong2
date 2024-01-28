@@ -12,7 +12,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="OnePlayer" type="Node2D" parent="."]
 texture_filter = 1
-position = Vector2(256, 448)
+position = Vector2(256, 512)
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="OnePlayer"]
@@ -26,7 +26,7 @@ offset_bottom = 64.0
 text = "1 Player"
 
 [node name="TwoPlayer" type="Node2D" parent="."]
-position = Vector2(768, 448)
+position = Vector2(768, 512)
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="TwoPlayer"]
@@ -43,9 +43,9 @@ text = "2 Player"
 [node name="Title" type="Label" parent="."]
 texture_filter = 1
 offset_left = 256.0
-offset_top = 64.0
+offset_top = 192.0
 offset_right = 896.0
-offset_bottom = 192.0
+offset_bottom = 320.0
 theme_override_font_sizes/font_size = 67
 text = "Really Bad Pong 2"
 horizontal_alignment = 1
@@ -54,13 +54,23 @@ vertical_alignment = 1
 [node name="Author" type="Label" parent="."]
 texture_filter = 1
 offset_left = 256.0
-offset_top = 192.0
+offset_top = 320.0
 offset_right = 896.0
-offset_bottom = 320.0
+offset_bottom = 448.0
 theme_override_font_sizes/font_size = 25
 text = "a game? by suarez aka metasaval"
 vertical_alignment = 2
 
+[node name="Controls" type="Label" parent="."]
+texture_filter = 1
+offset_right = 413.0
+offset_bottom = 153.0
+text = "P1 uses WASD and starts on the left side
+P2 uses Arrow Keys and starts on right side
+
+W/Up: moves your paddle up
+S/Down: moves your paddle down
+A/D/Left/Right/basically every remaining key: jam"
+
 [connection signal="pressed" from="OnePlayer/OnePlayerMode" to="." method="_on_one_player_mode_pressed"]
-[connection signal="pressed" from="TwoPlayer/TwoPlayerMode" to="." method="_on_one_player_mode_pressed"]
 [connection signal="pressed" from="TwoPlayer/TwoPlayerMode" to="." method="_on_two_player_mode_pressed"]

@@ -5,7 +5,7 @@ extends Node2D
 @onready var screen_size = get_viewport_rect().size
 
 const PADDLE_SPEED : int = 500
-const WIN_SCORE : int = 3
+const WIN_SCORE : int = 5
 
 var ballCounter : int
 var charScale : Vector2

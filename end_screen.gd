@@ -5,9 +5,15 @@ extends CanvasLayer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if Score.player >= 3:
-		$Winner.set_text("Player won")
+		if !Score.player2Mode:
+			$Winner.set_text("Player won")
+		else:
+			$Winner.set_text("Player 1 won")
 	else:
-		$Winner.set_text("CPU won")
+		if !Score.player2Mode:
+			$Winner.set_text("CPU won")
+		else:
+			$Winner.set_text("Player 2 won")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
