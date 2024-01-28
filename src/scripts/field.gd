@@ -60,14 +60,12 @@ func jamOut():
 				charScale /= 2
 				$Player.scale = charScale
 				$CPU.scale = charScale
-				$Ball.scale = charScale
 		4:
 			# make the characters bigger, but not too big
 			if charScale < Vector2(8, 8):
 				charScale *= 2
 				$Player.scale = charScale
 				$CPU.scale = charScale
-				$Ball.scale = charScale
 		5:
 			# turn screen wrap on/off
 			Globals.wrap = !Globals.wrap
@@ -100,6 +98,7 @@ func jamOut():
 			add_child(newBall)
 			ballCounter += 1
 		9:
+			# play a funny sound. thanks Kenney!
 			$AudioStreamPlayer2D.play()
 		_:
 			pass
