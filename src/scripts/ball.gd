@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var screen_size = get_viewport_rect().size
 
-const START_SPEED : int = 500
+const START_SPEED : int = 600
 const ACCEL : int = 50
 const MAX_Y_VECTOR : float = 0.6
 

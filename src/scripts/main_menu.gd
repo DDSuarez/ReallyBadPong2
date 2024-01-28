@@ -13,7 +13,7 @@ func _process(delta):
 
 
 func load_game():
-	game_screen = load("res://field.tscn")
+	game_screen = load("res://src/scenes/field.tscn")
 	get_tree().change_scene_to_packed(game_screen)
 
 

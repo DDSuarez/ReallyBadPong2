@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var end_screen = preload("res://end_screen.tscn")
+@onready var end_screen = preload("res://src/scenes/end_screen.tscn")
 
 @onready var screen_size = get_viewport_rect().size
 
@@ -33,6 +33,8 @@ func _process(delta):
 		p2Jammed = true
 		jamOut()
 		
+	$WrappedIndicator.visible = Globals.wrap
+	
 	if Globals.playerScore >= WIN_SCORE or Globals.cpuScore >= WIN_SCORE:
 		get_tree().change_scene_to_packed(end_screen)
 		
@@ -43,7 +45,7 @@ func jamOut():
 	match jam:
 		1:
 			# spawn a new ball
-			var ballScene = load("res://ball.tscn")
+			var ballScene = load("res://src/scenes/ball.tscn")
 			var newBall = ballScene.instantiate()
 			newBall.position.x = screen_size.x / 2
 			newBall.position.y = randi_range(200, screen_size.y - 200)
@@ -60,18 +62,15 @@ func jamOut():
 				charScale /= 2
 				$Player.scale = charScale
 				$CPU.scale = charScale
-				$Ball.scale = charScale
 		4:
 			# make the characters bigger, but not too big
 			if charScale < Vector2(8, 8):
 				charScale *= 2
 				$Player.scale = charScale
 				$CPU.scale = charScale
-				$Ball.scale = charScale
 		5:
 			# turn screen wrap on/off
 			Globals.wrap = !Globals.wrap
-			$WrappedIndicator.visible = Globals.wrap
 		6:
 			# increase ball speed
 			$Ball.speed += $Ball.ACCEL
@@ -80,7 +79,7 @@ func jamOut():
 			$Ball.speed -= $Ball.ACCEL
 		8:
 			# launches a fast ball from the paddle across the screen
-			var ballScene = load("res://ball.tscn")
+			var ballScene = load("res://src/scenes/ball.tscn")
 			var newBall = ballScene.instantiate()
 			newBall.speed = 1000
 			
@@ -100,6 +99,7 @@ func jamOut():
 			add_child(newBall)
 			ballCounter += 1
 		9:
+			# play a funny sound. thanks Kenney!
 			$AudioStreamPlayer2D.play()
 		_:
 			pass

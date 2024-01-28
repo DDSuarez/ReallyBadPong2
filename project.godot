@@ -11,13 +11,16 @@ config_version=5
 [application]
 
 config/name="ReallyBadPong2"
-run/main_scene="res://main_menu.tscn"
+config/description="Pong but bad."
+config/version="1"
+run/main_scene="res://src/scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/images/icon.png"
+config/windows_native_icon="res://assets/images/icon.ico"
 
 [autoload]
 
-Globals="*res://globals.gd"
+Globals="*res://src/scripts/globals.gd"
 
 [display]
 
