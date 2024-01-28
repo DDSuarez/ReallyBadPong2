@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://lo32xksvi7sb"]
+[gd_scene load_steps=9 format=3 uid="uid://lo32xksvi7sb"]
 
 [ext_resource type="Script" path="res://field.gd" id="1_3kao8"]
 [ext_resource type="Script" path="res://Player.gd" id="3_363c6"]
 [ext_resource type="Script" path="res://CPU.gd" id="4_0md7o"]
 [ext_resource type="PackedScene" uid="uid://d2pskdj6pp6np" path="res://ball.tscn" id="4_vvp0e"]
+[ext_resource type="AudioStream" uid="uid://d3jtx8ai5s0vx" path="res://assets/jingles-steel_00.ogg" id="5_410mk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejmuw"]
 size = Vector2(20, 120)
@@ -131,6 +132,9 @@ offset_top = 8.0
 offset_right = 48.0
 offset_bottom = 31.0
 text = "Wrapped!"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_410mk")
 
 [connection signal="body_entered" from="ScoreLeft" to="." method="_on_score_left_body_entered"]
 [connection signal="body_entered" from="ScoreRight" to="." method="_on_score_right_body_entered"]
