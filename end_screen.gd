@@ -4,16 +4,16 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if Globals.playerScore >= 3:
+	if Globals.playerScore >= 10:
 		if !Globals.player2Mode:
-			$Winner.set_text("Player won")
+			$Winner.set_text("Player Wins!")
 		else:
-			$Winner.set_text("Player 1 won")
+			$Winner.set_text("Player 1 Wins!")
 	else:
 		if !Globals.player2Mode:
-			$Winner.set_text("CPU won")
+			$Winner.set_text("CPU Wins!")
 		else:
-			$Winner.set_text("Player 2 won")
+			$Winner.set_text("Player 2 Wins!")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

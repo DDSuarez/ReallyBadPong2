@@ -63,8 +63,10 @@ vertical_alignment = 2
 
 [node name="Controls" type="Label" parent="."]
 texture_filter = 1
-offset_right = 413.0
-offset_bottom = 153.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 423.0
+offset_bottom = 215.0
 text = "P1 uses WASD and starts on the left side
 P2 uses Arrow Keys and starts on right side
 

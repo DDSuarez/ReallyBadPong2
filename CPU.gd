@@ -25,7 +25,7 @@ func _process(delta):
 		#move paddle towards ball
 		ball_pos = $"../Ball".position
 		dist = position.y - ball_pos.y
-		newSpeed = randi_range(100, CPU_SPEED)
+		newSpeed = randi_range(200, CPU_SPEED)
 		
 		if abs(dist) > newSpeed * delta:
 			move_by = newSpeed * delta * (dist / abs(dist)) # gives a sign to the move_by variable to see if the ball is above or below

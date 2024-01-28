@@ -38,7 +38,7 @@ func _process(delta):
 		
 func jamOut():
 	var jam = randi_range(1,9)
-	#var jam = 8
+	#var jam = 4
 	
 	match jam:
 		1:
@@ -56,14 +56,14 @@ func jamOut():
 			$Background.set_color(Color(randf_range(0, 1), randf_range(0, 1), randf_range(0, 1), randf_range(0, 1)))
 		3:
 			# make the characters smaller, but not too small
-			if charScale > Vector2(0.03125, 0.03125):
+			if charScale > Vector2(0.125, 0.125):
 				charScale /= 2
 				$Player.scale = charScale
 				$CPU.scale = charScale
 				$Ball.scale = charScale
 		4:
 			# make the characters bigger, but not too big
-			if charScale < Vector2(32, 32):
+			if charScale < Vector2(8, 8):
 				charScale *= 2
 				$Player.scale = charScale
 				$CPU.scale = charScale
