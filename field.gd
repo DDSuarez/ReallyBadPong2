@@ -23,9 +23,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("jam"):
 		jamOut()
 		
-	if Score.player >= 3 or Score.cpu >= 3:
-		#var final_screen = end_screen.instantiate()
-		#final_screen.setPlayerWin() if $Player.score >= 3 else final_screen.setCPUWin()
+	if Score.player >= WIN_SCORE or Score.cpu >= WIN_SCORE:
 		get_tree().change_scene_to_packed(end_screen)
 		
 func jamOut():
@@ -34,6 +32,7 @@ func jamOut():
 	
 	match jam:
 		1:
+			# spawn a new ball
 			var newBall = ballScene.instantiate()
 			newBall.position.x = screen_size.x / 2
 			newBall.position.y = randi_range(200, screen_size.y - 200)
@@ -42,14 +41,17 @@ func jamOut():
 			add_child(newBall)
 			ballCounter += 1
 		2:
+			# change the background color randomly
 			$Background.set_color(Color(randf_range(0, 1), randf_range(0, 1), randf_range(0, 1), randf_range(0, 1)))
 		3:
+			# make the characters smaller, but not too small
 			if charScale > Vector2(0.03125, 0.03125):
 				charScale /= 2
 				$Player.scale = charScale
 				$CPU.scale = charScale
 				$Ball.scale = charScale
 		4:
+			# make the characters bigger, but not too big
 			if charScale < Vector2(32, 32):
 				charScale *= 2
 				$Player.scale = charScale
@@ -65,7 +67,6 @@ func _on_ball_timer_timeout():
 
 
 func _on_score_left_body_entered(body):
-	#$CPU.score += 1
 	Score.cpu += 1
 	$HUD/CPUScore.text = str(Score.cpu)
 	ballCounter -= 1

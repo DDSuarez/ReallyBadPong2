@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var game_screen = preload("res://field.tscn")
+#@onready var game_screen = preload("res://field.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,6 +14,7 @@ func _process(delta):
 
 
 func _on_one_player_mode_pressed():
+	var game_screen = load("res://field.tscn")
 	get_tree().change_scene_to_packed(game_screen)
 
 

@@ -22,7 +22,7 @@ vertical_alignment = 1
 
 [node name="Restart" type="Node2D" parent="."]
 texture_filter = 1
-position = Vector2(448, 448)
+position = Vector2(512, 448)
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Restart"]
