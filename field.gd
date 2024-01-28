@@ -37,8 +37,8 @@ func _process(delta):
 		get_tree().change_scene_to_packed(end_screen)
 		
 func jamOut():
-	#var jam = randi_range(1,7)
-	var jam = 8
+	var jam = randi_range(1,9)
+	#var jam = 8
 	
 	match jam:
 		1:
